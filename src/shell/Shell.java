@@ -1,14 +1,17 @@
 package shell;
 
+import java.util.Arrays;
 import java.util.Scanner;
+import parser.CommandParser;
 
 public class Shell {
     public void start() {
 
         Scanner sc = new Scanner(System.in);
+        CommandParser par = new CommandParser();
 
         System.out.println("Welcome to JSH!");
-        System.out.println("type 'exit' to close the shell");
+        System.out.println("Type 'exit' to close the shell");
         System.out.println();
 
         while (true) {
@@ -25,7 +28,13 @@ public class Shell {
                 break;
             }
 
-            System.out.println("Entered Command = " + command);
+            String[] parts = par.parse(command);
+
+            String commandName = parts[0];
+            String[] arguments = Arrays.copyOfRange(parts, 1, parts.length);
+
+            System.out.println("Entered Command = " + commandName);
+            System.out.println("Entered Argument = " + Arrays.toString(arguments));
             System.out.println();
         }
 

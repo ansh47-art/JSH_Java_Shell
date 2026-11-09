@@ -2,6 +2,7 @@ package shell;
 
 import commands.CdCommand;
 import commands.Command;
+import commands.LsCommand;
 import commands.MkdirCommand;
 import commands.PwdCommand;
 import java.nio.file.Path;
@@ -21,6 +22,7 @@ public class Shell {
         hm.put("mkdir", new MkdirCommand(this));
         hm.put("pwd", new PwdCommand(this));
         hm.put("cd", new CdCommand(this));
+        hm.put("ls", new LsCommand(this));
     }
 
     public Path getCurrentDirectory() {

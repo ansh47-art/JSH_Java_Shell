@@ -3,6 +3,8 @@ package shell;
 
 import commands.Command;
 import commands.MkdirCommand;
+import commands.PwdCommand;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -10,10 +12,18 @@ import parser.CommandParser;
 
 public class Shell {
     private HashMap <String, Command> hm;
+    private Path currentDir;
 
     public Shell() {
+        currentDir = Path.of(System.getProperty("user.dir")).toAbsolutePath().normalize();
+        
         hm = new HashMap <> ();
-        hm.put("mkdir", new MkdirCommand());
+        hm.put("mkdir", new MkdirCommand(this));
+        hm.put("pwd", new PwdCommand(this));
+    }
+
+    public Path getCurrentDirectory() {
+        return currentDir;
     }
 
     public void start() {

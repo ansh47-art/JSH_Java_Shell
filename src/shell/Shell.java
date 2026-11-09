@@ -1,6 +1,6 @@
 package shell;
 
-
+import commands.CdCommand;
 import commands.Command;
 import commands.MkdirCommand;
 import commands.PwdCommand;
@@ -16,14 +16,19 @@ public class Shell {
 
     public Shell() {
         currentDir = Path.of(System.getProperty("user.dir")).toAbsolutePath().normalize();
-        
+
         hm = new HashMap <> ();
         hm.put("mkdir", new MkdirCommand(this));
         hm.put("pwd", new PwdCommand(this));
+        hm.put("cd", new CdCommand(this));
     }
 
     public Path getCurrentDirectory() {
         return currentDir;
+    }
+
+    public void setCurrentDirectory(Path path) {
+        currentDir = path;
     }
 
     public void start() {

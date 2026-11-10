@@ -12,7 +12,7 @@ public class PwdCommand implements Command {
     @Override
     public void execute(String[] args) {
         if (args.length > 0) {
-            System.out.println("Error: pwd does not accept arguments!");
+            System.out.println("Usage: pwd");
             return;
         }
 

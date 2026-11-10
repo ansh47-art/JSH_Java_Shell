@@ -15,7 +15,7 @@ public class RmCommand implements Command {
     @Override
     public void execute (String[] args) {
         if (args.length == 0) {
-            System.out.println("Error: rm needs atleast an argument!");
+            System.out.println("Usage: rm <file_name> [file_name ...]");
             return;
         }
 

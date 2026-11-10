@@ -17,7 +17,7 @@ public class MkdirCommand implements Command {
     @Override
     public void execute (String[] args) {
         if (args.length == 0) {
-            System.out.println("Error: Directory name is required!");
+            System.out.println("Usage: mkdir <directory_name> [directory_name ...]");
             return;
         }
 

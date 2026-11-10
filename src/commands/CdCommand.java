@@ -1,8 +1,8 @@
 package commands;
 
-import shell.Shell;
-import java.nio.file.Path;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import shell.Shell;
 
 
 public class CdCommand implements Command {
@@ -17,12 +17,12 @@ public class CdCommand implements Command {
         if (args.length > 1 || args.length == 0) {
             if (args.length > 1) {
                 System.out.println("Error: cd can't have more than one argument!");
-                return;
             }
             else {
                 System.out.println("Error: cd requires an argument!");
-                return;
             }
+            System.out.println("Usage: cd <directory_name>");
+            return;
         }
 
         Path updatedPath = sh.getCurrentDirectory().resolve(args[0]).normalize();

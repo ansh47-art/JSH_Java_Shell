@@ -15,7 +15,7 @@ public class RmdirCommand implements Command {
     @Override 
     public void execute (String[] args) {
         if (args.length == 0) {
-            System.out.println("Error: rmdir needs atleast an argument!");
+            System.out.println("Usage: rmdir <directory_name> [directory_name ...]");
             return;
         }
 

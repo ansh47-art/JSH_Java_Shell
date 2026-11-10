@@ -16,7 +16,7 @@ public class LsCommand implements Command {
     @Override
     public void execute (String[] args) {
         if (args.length != 0) {
-            System.out.println("Error: ls does not need arguments!");
+            System.out.println("Usage: ls");
             return;
         }
 

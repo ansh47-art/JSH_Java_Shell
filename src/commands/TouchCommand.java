@@ -15,7 +15,7 @@ public class TouchCommand implements Command {
     @Override
     public void execute (String[] args) {
         if (args.length == 0) {
-            System.out.println("Error: touch needs argument!");
+            System.out.println("Usage: touch <file_name> [file_name ...]");
             return;
         }
 

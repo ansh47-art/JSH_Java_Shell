@@ -15,7 +15,7 @@ public class CatCommand implements Command{
     @Override
     public void execute (String[] args) {
         if (args.length == 0) {
-            System.out.println("Error: cat needs atleast one argument!");
+            System.out.println("Usage: cat <file_name> [file_name ...]");
             return;
         }
 

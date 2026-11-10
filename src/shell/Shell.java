@@ -6,6 +6,7 @@ import commands.Command;
 import commands.CpCommand;
 import commands.LsCommand;
 import commands.MkdirCommand;
+import commands.MvCommand;
 import commands.PwdCommand;
 import commands.RmCommand;
 import commands.RmdirCommand;
@@ -33,6 +34,7 @@ public class Shell {
         hm.put("rm", new RmCommand(this));
         hm.put("rmdir", new RmdirCommand(this));
         hm.put("cp", new CpCommand(this));
+        hm.put("mv", new MvCommand(this));
     }
 
     public Path getCurrentDirectory() {

@@ -4,6 +4,7 @@ import commands.CatCommand;
 import commands.CdCommand;
 import commands.Command;
 import commands.CpCommand;
+import commands.FindCommand;
 import commands.HistoryCommand;
 import commands.LsCommand;
 import commands.MkdirCommand;
@@ -40,6 +41,7 @@ public class Shell {
         hm.put("cp", new CpCommand(this));
         hm.put("mv", new MvCommand(this));
         hm.put("history", new HistoryCommand(this));
+        hm.put("find", new FindCommand(this));
     }
 
     public Path getCurrentDirectory() {

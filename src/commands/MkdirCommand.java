@@ -28,7 +28,7 @@ public class MkdirCommand implements Command {
                 Files.createDirectory(path);
             } 
             catch (IOException e) {
-                System.out.println("Error occured in creating directory: " + dirName);
+                System.out.println("Error: " + dirName + " already exists!");
             }
         }
     }

@@ -1,9 +1,9 @@
 package commands;
 
-import shell.Shell;
-import java.nio.file.Path;
-import java.nio.file.Files;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import shell.Shell;
 
 public class TouchCommand implements Command {
     private final Shell sh;
@@ -26,7 +26,7 @@ public class TouchCommand implements Command {
                 Files.createFile(currentPath);
             }
             catch (IOException e) {
-                System.out.println("Error: " + fileName + " already exists!");
+                System.out.println("Error: " + e.getMessage());
             }
         }
     }

@@ -6,6 +6,8 @@ import commands.Command;
 import commands.LsCommand;
 import commands.MkdirCommand;
 import commands.PwdCommand;
+import commands.RmCommand;
+import commands.RmdirCommand;
 import commands.TouchCommand;
 import java.nio.file.Path;
 import java.util.Arrays;
@@ -27,6 +29,8 @@ public class Shell {
         hm.put("ls", new LsCommand(this));
         hm.put("touch", new TouchCommand(this));
         hm.put("cat", new CatCommand(this));
+        hm.put("rm", new RmCommand(this));
+        hm.put("rmdir", new RmdirCommand(this));
     }
 
     public Path getCurrentDirectory() {

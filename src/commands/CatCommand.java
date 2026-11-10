@@ -1,8 +1,8 @@
 package commands;
 
-import java.nio.file.Path;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import shell.Shell;
 
 public class CatCommand implements Command{
@@ -27,7 +27,7 @@ public class CatCommand implements Command{
                 System.out.println(content);
             } 
             catch (IOException e) {
-                System.out.println("Error: " + fileName + " doesn't exist in the current dir!");
+                System.out.println("Error: " + e.getMessage());
             }
         }
     }

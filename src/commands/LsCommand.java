@@ -1,9 +1,9 @@
 package commands;
 
-import java.nio.file.Path;
-import java.nio.file.Files;
-import java.util.stream.Stream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.stream.Stream;
 import shell.Shell;
 
 public class LsCommand implements Command {
@@ -29,7 +29,7 @@ public class LsCommand implements Command {
             });
         }
         catch (IOException e) {
-            System.out.println("Error: something went wrong in listing current dir!");
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }

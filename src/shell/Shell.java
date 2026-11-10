@@ -4,6 +4,7 @@ import commands.CatCommand;
 import commands.CdCommand;
 import commands.Command;
 import commands.CpCommand;
+import commands.HistoryCommand;
 import commands.LsCommand;
 import commands.MkdirCommand;
 import commands.MvCommand;
@@ -12,6 +13,7 @@ import commands.RmCommand;
 import commands.RmdirCommand;
 import commands.TouchCommand;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -19,12 +21,14 @@ import parser.CommandParser;
 
 public class Shell {
     private HashMap <String, Command> hm;
+    private ArrayList <String> history;
     private Path currentDir;
 
     public Shell() {
         currentDir = Path.of(System.getProperty("user.dir")).toAbsolutePath().normalize();
 
         hm = new HashMap <> ();
+        history = new ArrayList <> ();
         hm.put("mkdir", new MkdirCommand(this));
         hm.put("pwd", new PwdCommand(this));
         hm.put("cd", new CdCommand(this));
@@ -35,6 +39,7 @@ public class Shell {
         hm.put("rmdir", new RmdirCommand(this));
         hm.put("cp", new CpCommand(this));
         hm.put("mv", new MvCommand(this));
+        hm.put("history", new HistoryCommand(this));
     }
 
     public Path getCurrentDirectory() {
@@ -43,6 +48,14 @@ public class Shell {
 
     public void setCurrentDirectory(Path path) {
         currentDir = path;
+    }
+
+    public void getHistoryOfCommands() {
+        Integer i = 1;
+        for (String cmd : history) {
+            System.out.println(i + ". " + cmd);
+            i++;
+        }
     }
 
     public void start() {
@@ -67,6 +80,8 @@ public class Shell {
                 System.out.println("Closing shell...");
                 break;
             }
+
+            history.add(command);
 
             String[] parts = par.parse(command);
 

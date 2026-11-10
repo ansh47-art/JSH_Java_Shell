@@ -1,5 +1,6 @@
 package shell;
 
+import commands.CatCommand;
 import commands.CdCommand;
 import commands.Command;
 import commands.LsCommand;
@@ -25,6 +26,7 @@ public class Shell {
         hm.put("cd", new CdCommand(this));
         hm.put("ls", new LsCommand(this));
         hm.put("touch", new TouchCommand(this));
+        hm.put("cat", new CatCommand(this));
     }
 
     public Path getCurrentDirectory() {

@@ -3,6 +3,7 @@ package shell;
 import commands.CatCommand;
 import commands.CdCommand;
 import commands.Command;
+import commands.CpCommand;
 import commands.LsCommand;
 import commands.MkdirCommand;
 import commands.PwdCommand;
@@ -31,6 +32,7 @@ public class Shell {
         hm.put("cat", new CatCommand(this));
         hm.put("rm", new RmCommand(this));
         hm.put("rmdir", new RmdirCommand(this));
+        hm.put("cp", new CpCommand(this));
     }
 
     public Path getCurrentDirectory() {

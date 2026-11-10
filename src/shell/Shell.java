@@ -5,6 +5,7 @@ import commands.Command;
 import commands.LsCommand;
 import commands.MkdirCommand;
 import commands.PwdCommand;
+import commands.TouchCommand;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -23,6 +24,7 @@ public class Shell {
         hm.put("pwd", new PwdCommand(this));
         hm.put("cd", new CdCommand(this));
         hm.put("ls", new LsCommand(this));
+        hm.put("touch", new TouchCommand(this));
     }
 
     public Path getCurrentDirectory() {

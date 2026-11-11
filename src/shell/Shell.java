@@ -13,6 +13,7 @@ import commands.PwdCommand;
 import commands.RmCommand;
 import commands.RmdirCommand;
 import commands.TouchCommand;
+import commands.TreeCommand;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,6 +43,7 @@ public class Shell {
         hm.put("mv", new MvCommand(this));
         hm.put("history", new HistoryCommand(this));
         hm.put("find", new FindCommand(this));
+        hm.put("tree", new TreeCommand(this));
     }
 
     public Path getCurrentDirectory() {

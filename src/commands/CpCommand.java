@@ -34,6 +34,10 @@ public class CpCommand implements Command {
                 if (Files.isDirectory(destinationPath)) {
                     destinationPath = destinationPath.resolve(sourcePath.getFileName());
                 }
+                if (!Files.isRegularFile(sourcePath)) {
+                    System.out.println("Error: Source is not a regular file: " + sourcePath);
+                    continue;
+                }
                 Files.copy(sourcePath, destinationPath);
 
                 destinationPath = sh.getCurrentDirectory().resolve(args[args.length-1]).normalize();

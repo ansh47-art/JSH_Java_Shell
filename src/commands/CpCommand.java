@@ -15,22 +15,32 @@ public class CpCommand implements Command {
 
     @Override
     public void execute (String[] args) {
-        if (args.length != 2) {
-            System.out.println("Usage: cp <source> <destination>");
+        if (args.length < 2) {
+            System.out.println("Usage: cp <source1> [source2 ...] <destination>");
             return;
         }
 
-        Path sourcePath = sh.getCurrentDirectory().resolve(args[0]).normalize();
-        Path destinationPath = sh.getCurrentDirectory().resolve(args[1]).normalize();
+        Path destinationPath = sh.getCurrentDirectory().resolve(args[args.length-1]).normalize();
 
-        try {
-            if (Files.isDirectory(destinationPath)) {
-                destinationPath = destinationPath.resolve(sourcePath.getFileName());
-            }
-            Files.copy(sourcePath, destinationPath);
+        if (args.length > 2 && !Files.isDirectory(destinationPath)) {
+            System.out.println("Error: Destination should be a directory!");
+            return;
         }
-        catch (IOException e) {
-            System.out.println("Error in copying file: " + e.getMessage());
+
+        for (int i = 0; i < args.length-1; i++) {
+            Path sourcePath = sh.getCurrentDirectory().resolve(args[i]).normalize();
+            
+            try {
+                if (Files.isDirectory(destinationPath)) {
+                    destinationPath = destinationPath.resolve(sourcePath.getFileName());
+                }
+                Files.copy(sourcePath, destinationPath);
+
+                destinationPath = sh.getCurrentDirectory().resolve(args[args.length-1]).normalize();
+            }
+            catch (IOException e) {
+                System.out.println("Error in copying file: " + e.getMessage());
+            }
         }
     }
 }

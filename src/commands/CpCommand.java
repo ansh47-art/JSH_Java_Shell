@@ -24,6 +24,9 @@ public class CpCommand implements Command {
         Path destinationPath = sh.getCurrentDirectory().resolve(args[1]).normalize();
 
         try {
+            if (Files.isDirectory(destinationPath)) {
+                destinationPath = destinationPath.resolve(sourcePath.getFileName());
+            }
             Files.copy(sourcePath, destinationPath);
         }
         catch (IOException e) {

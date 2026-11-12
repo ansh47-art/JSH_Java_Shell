@@ -87,7 +87,15 @@ public class Shell {
 
             history.add(command);
 
-            String[] parts = par.parse(command);
+            String[] parts;
+
+            try {
+                parts = par.parse(command);
+            } 
+            catch (IllegalArgumentException e) {
+                System.out.println("Parse Error: " + e.getMessage());
+                continue;
+            }
 
             String commandName = parts[0].toLowerCase();
             String[] arguments = Arrays.copyOfRange(parts, 1, parts.length);
